@@ -1,4 +1,0 @@
-#!/bin/bash
-
-pandoc --smart --to=revealjs --output=gh-pages/index.html --standalone git-workshop.md
-
