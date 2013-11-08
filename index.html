@@ -4,12 +4,32 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Eric Rochester" />
+  <meta name="author" content="Scholars’ Lab" />
   <title>Git Workshop</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="reveal.js/css/reveal.min.css"/>
     <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+    </style>
     <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
   <link rel="stylesheet" media="print" href="reveal.js/css/print/pdf.css" />
   <!--[if lt IE 9]>
@@ -23,17 +43,252 @@
 <section>
     <h1 class="title">Git Workshop</h1>
     <h2 class="author">Eric Rochester</h2>
+    <h2 class="author">Scholars’ Lab</h2>
     <h3 class="date">November 8, 2013</h3>
 </section>
 
-<section><section id="git" class="titleslide slide level1"><h1>Git!</h1></section><section id="what-is-it" class="slide level2">
-<h1>What is It?</h1>
-<p>It’s <strong>AWESOME</strong>!</p>
-</section><section id="why-use-it" class="slide level2">
-<h1>Why Use It?</h1>
-<p><strong>Because!</strong></p>
-<p>That’s why.</p>
+<section id="section" class="slide level2">
+<h1></h1>
+<p>What is It?</p>
+<p>Why Use it?</p>
+<p>Git’s Worldview</p>
+<p>Creating a Project</p>
+<p>Changing a Project</p>
+<p>Sharing a Project</p>
+</section>
+<section><section id="what-is-it" class="titleslide slide level1"><h1>What is It?</h1></section><section id="distributed" class="slide level2">
+<h1>Distributed</h1>
+<aside class="notes">
+Easy to share.
+</aside>
+</section><section id="version" class="slide level2">
+<h1>Version</h1>
+<aside class="notes">
+<p>Track changes.</p>
+<p>What changed?</p>
+<p>When?</p>
+Why?
+</aside>
+</section><section id="control" class="slide level2">
+<h1>Control</h1>
+<aside class="notes">
+<p>Can I get rid of a change?</p>
+Can I try something without messing up what I have?
+</aside>
+</section><section id="system" class="slide level2">
+<h1>System</h1>
+<aside class="notes">
+<p>Adds process.</p>
+<p>Good and bad.</p>
+You can use this to your advantage, or it can get in your way.
+</aside>
 </section></section>
+<section><section id="why-use-it" class="titleslide slide level1"><h1>Why Use It?</h1></section><section id="file-backup" class="slide level2">
+<h1>File Backup</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span>
+<span class="kw">Paper.doc</span>
+<span class="kw">Paper-aug-30-300.doc</span>
+<span class="kw">Paper-aug-4-700.doc</span>
+<span class="kw">Paper-aug-4-800.doc</span>
+<span class="kw">Paper-jul-31-730.doc</span>
+<span class="kw">Paper-sept-1-830.doc</span>
+$ <span class="kw">cp</span> Paper.doc Paper-nov-8-400.doc</code></pre>
+</section><section id="directory-backup" class="slide level2">
+<h1>Directory Backup</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span>
+<span class="kw">website/</span>
+<span class="kw">website-aug-30-300.zip</span>
+<span class="kw">website-aug-4-700.zip</span>
+<span class="kw">website-aug-4-800.zip</span>
+$ <span class="kw">zip</span> -r website website-nov-8-400.doc</code></pre>
+</section><section id="whats-wrong-with-this-picture" class="slide level2">
+<h1>What’s Wrong with this Picture?</h1>
+<ul>
+<li class="fragment">When did remove that section?</li>
+<li class="fragment">What was I working on Aug 4?</li>
+<li class="fragment">Was that 8:00 AM or PM?</li>
+<li class="fragment">When did I change the stylesheet?</li>
+<li class="fragment">How do I collaborate?</li>
+<li class="fragment">If I send someone a ZIP, how do I get the changes back out? What if we’ve both changed something?</li>
+</ul>
+</section><section id="how-does-git-fix-it" class="slide level2">
+<h1>How Does Git Fix it?</h1>
+<ul>
+<li class="fragment">Commits and commit messages</li>
+<li class="fragment">History</li>
+<li class="fragment">Branches</li>
+</ul>
+</section><section id="git-doesnt-do" class="slide level2">
+<h1>Git Doesn’t Do</h1>
+<ul>
+<li class="fragment">Website hosting</li>
+<li class="fragment">Build system</li>
+<li class="fragment">Archiving or backup</li>
+</ul>
+</section></section>
+<section><section id="how-does-git-see-the-world" class="titleslide slide level1"><h1>How Does Git See the World?</h1></section><section id="working-directory" class="slide level2">
+<h1>Working Directory</h1>
+<aside class="notes">
+This you know. This is what you currently have.
+</aside>
+</section><section id="staging" class="slide level2">
+<h1>Staging</h1>
+<aside class="notes">
+Things in here aren’t in version control, but they almost are.
+</aside>
+</section><section id="the-repository" class="slide level2">
+<h1>The Repository</h1>
+<aside class="notes">
+Here is where git tracks your files, changes, and history.
+</aside>
+</section><section id="remotes" class="slide level2">
+<h1>Remotes</h1>
+<aside class="notes">
+<p>When you’re ready to share your project and get other people working on it too.</p>
+We may not get to this today.
+</aside>
+</section></section>
+<section><section id="creating-a-project" class="titleslide slide level1"><h1>Creating a Project</h1></section><section id="section-1" class="slide level2">
+<h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">mkdir</span> new-site
+$ <span class="kw">cd</span> new-site
+$ <span class="kw">git</span> init
+<span class="kw">Initialized</span> empty Git repository in /Users/err8n/tmp/new-site/.git/</code></pre>
+<aside class="notes">
+<p>We’ve just created a directory for a project.</p>
+<p>We’ve told git that we want to track the changes to some of the files in this directory.</p>
+<p>Git has created a .git directory. That will contain everything that git knows. We don’t have to worry about what’s in there or look in it.</p>
+Right now there aren’t any files in here, though. Let’s fix that.
+</aside>
+</section><section id="section-2" class="slide level2">
+<h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> index.html
+$ <span class="co">## edit index.html</span>
+$ <span class="kw">git</span> status
+<span class="co"># On branch master</span>
+<span class="co">#</span>
+<span class="co"># Initial commit</span>
+<span class="co">#</span>
+<span class="co"># Untracked files:</span>
+<span class="co">#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span>
+<span class="co">#</span>
+<span class="co">#       index.html</span>
+<span class="kw">nothing</span> added to commit but untracked files present (use <span class="st">&quot;git add&quot;</span> to track)</code></pre>
+<aside class="notes">
+<p>git status tells us what git thinks about the world right now.</p>
+<p>Right now, git knows that there’s a file in the directory, but it’s not paying attention to it.</p>
+This also gives us a hint of what we can do next.
+</aside>
+</section><section id="section-3" class="slide level2">
+<h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add index.html
+$ <span class="kw">git</span> status
+<span class="co"># On branch master</span>
+<span class="co">#</span>
+<span class="co"># Initial commit</span>
+<span class="co">#</span>
+<span class="co"># Changes to be committed:</span>
+<span class="co">#   (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span>
+<span class="co">#</span>
+<span class="co">#       new file:   index.html</span>
+<span class="co">#</span></code></pre>
+<aside class="notes">
+<p>With the git add command, git is now paying attention to index.html. It’s not tracking any changes, but we’ve told git that we want to remember that file <em>the way it is right now</em>. If we make any more changes, they won’t be included.</p>
+<p>At this point, the index.html file has moved from the working directory into staging. It’s not being tracked, but it’s ready to be.</p>
+From the status, we can see that one file—one that git has just learned about—is ready to be committed. That is, it’s in staging.
+</aside>
+</section><section id="section-4" class="slide level2">
+<h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> commit -m <span class="st">&quot;initial import&quot;</span>
+[<span class="kw">master</span> (root-commit) <span class="kw">2c49bf0</span>] initial import
+ <span class="kw">1</span> file changed, 15 insertions(+)
+  <span class="kw">create</span> mode 100644 index.html
+$ <span class="kw">git</span> status
+<span class="co"># On branch master</span>
+<span class="kw">nothing</span> to commit, working directory clean</code></pre>
+<aside class="notes">
+<p>This used the git commit command.</p>
+<p>Now the file, as it is, is being tracked in the repository. The changes have moved out of staging and are in the permanent (more or less) record.</p>
+<p>We also included a message here, with the “-m” switch and the string after it. That will help us identify the commit later and remember what we did with it.</p>
+If you don’t specify the commit message on the command line, git will open up an editor so you can enter the command into it. By default, it will probably use vi or something similarly unfriendly. Use the command line and the “-m” switch until you can change your default editor (which we won’t do now).
+</aside>
+</section><section id="section-5" class="slide level2">
+<h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> log
+<span class="kw">commit</span> 2c49bf0977c74ce232cb52fcb8d129e32ee94f28
+<span class="kw">Author</span>: Eric Rochester <span class="kw">&lt;</span>erochest@virginia.edu<span class="kw">&gt;</span>
+<span class="kw">Date</span>:   Thu Nov 7 15:24:46 2013 -0500
+
+    <span class="kw">initial</span> import</code></pre>
+<aside class="notes">
+git log is the command we use to look at what’s happened in the repository. Take the output apart.
+</aside>
+</section></section>
+<section><section id="changing-a-project" class="titleslide slide level1"><h1>Changing a Project</h1></section><section id="section-6" class="slide level2">
+<h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="co"># edit index.html again.</span>
+$ <span class="kw">touch</span> style.css
+$ <span class="co"># edit style.css</span>
+$ <span class="kw">git</span> status
+<span class="co"># On branch master</span>
+<span class="co"># Changes not staged for commit:</span>
+<span class="co">#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="co">#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+<span class="co">#</span>
+<span class="co">#       modified:   index.html</span>
+<span class="co">#</span>
+<span class="co"># Untracked files:</span>
+<span class="co">#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span>
+<span class="co">#</span>
+<span class="co">#       style.css</span>
+<span class="kw">no</span> changes added to commit (use <span class="st">&quot;git add&quot;</span> and/or <span class="st">&quot;git commit -a&quot;</span>)</code></pre>
+<aside class="notes">
+<p>What do you see here?</p>
+<p>index.html has been modified.</p>
+style.css is new.
+</aside>
+</section><section id="section-7" class="slide level2">
+<h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> diff
+<span class="kw">diff</span> --git a/index.html b/index.html
+<span class="kw">index</span> 8a5f865..6f7d64e 100644
+<span class="kw">---</span> a/index.html
+<span class="kw">+++</span> b/index.html
+<span class="kw">@@</span> -3,6 +3,7 @@
+ <span class="kw">&lt;head&gt;</span>
+     <span class="kw">&lt;title&gt;&lt;</span>/title<span class="kw">&gt;</span>
+     <span class="kw">&lt;meta</span> charset=<span class="st">&quot;utf-8&quot;</span> /<span class="kw">&gt;</span>
+<span class="kw">+</span>    <span class="kw">&lt;</span>link rel=<span class="st">&quot;stylesheet&quot;</span> href=<span class="st">&quot;style.css&quot;</span> type=<span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>
+ <span class="kw">&lt;</span>/<span class="kw">head&gt;</span>
+ <span class="kw">&lt;body&gt;</span>
+     <span class="kw">&lt;header&gt;</span></code></pre>
+<aside class="notes">
+git diff shows us the current set of changes in the working directory for files that are being tracked.
+</aside>
+</section><section id="section-8" class="slide level2">
+<h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add index.html style.css
+$ <span class="kw">git</span> status
+ <span class="co"># On branch master</span>
+ <span class="co"># Changes to be committed:</span>
+ <span class="co">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+ <span class="co">#</span>
+ <span class="co">#       modified:   index.html</span>
+ <span class="co">#       new file:   style.css</span>
+ <span class="co">#</span></code></pre>
+<aside class="notes">
+Now we’ve put a modified index.html and a new style.css into the staging area.
+</aside>
+</section><section id="section-9" class="slide level2">
+<h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> commit -m <span class="st">&quot;A little bit stylish.&quot;</span>
+[<span class="kw">master</span> 740343e] A little bit stylish.
+ <span class="kw">2</span> files changed, 4 insertions(+)
+  <span class="kw">create</span> mode 100644 style.css</code></pre>
+<!-- TODO: git status and git log -->
+
+</section></section>
+<section><section id="sharing-a-project" class="titleslide slide level1"><h1>Sharing a Project</h1></section></section>
 <section><section id="more-resources" class="titleslide slide level1"><h1>More Resources</h1></section></section>
     </div>
   </div>
@@ -50,7 +305,7 @@
         progress: true,
         history: true,
         center: true,
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        theme: 'moon', // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
         // Optional libraries used to extend on reveal.js
