@@ -11,6 +11,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="reveal.js/css/reveal.min.css"/>
     <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+    </style>
     <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
   <link rel="stylesheet" media="print" href="reveal.js/css/print/pdf.css" />
   <!--[if lt IE 9]>
@@ -66,30 +85,34 @@ You can use this to your advantage, or it can get in your way.
 </section></section>
 <section><section id="why-use-it" class="titleslide slide level1"><h1>Why Use It?</h1></section><section id="file-backup" class="slide level2">
 <h1>File Backup</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">ls</span></code></pre>
 <pre><code>
-$ ls
 Paper.doc
 Paper-aug-30-300.doc
 Paper-aug-4-700.doc
 Paper-aug-4-800.doc
 Paper-jul-31-730.doc
 Paper-sept-1-830.doc
-$ cp Paper.doc Paper-nov-8-400.doc
 </code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">cp</span> Paper.doc Paper-nov-8-400.doc</code></pre>
 </section><section id="directory-backup" class="slide level2">
 <h1>Directory Backup</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">ls</span></code></pre>
 <pre><code>
-$ ls
 website/
 website-aug-30-300.zip
 website-aug-4-700.zip
 website-aug-4-800.zip
-$ zip -r website website-nov-8-400.doc
 </code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">zip</span> -r website website-nov-8-400.doc</code></pre>
 </section><section id="whats-wrong-with-this-picture" class="slide level2">
 <h1>What’s Wrong with this Picture?</h1>
 <ul>
-<li class="fragment">When did remove that section?</li>
+<li class="fragment">When did I remove that section?</li>
 <li class="fragment">What was I working on Aug 4?</li>
 <li class="fragment">Was that 8:00 AM or PM?</li>
 <li class="fragment">When did I change the stylesheet?</li>
@@ -133,12 +156,21 @@ Here is where git tracks your files, changes, and history.
 We may not get to this today.
 </aside>
 </section></section>
+<section><section id="getting-ready" class="titleslide slide level1"><h1>Getting Ready</h1></section><section id="who-am-i" class="slide level2">
+<h1>Who Am I?</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> config --global user.name <span class="st">&quot;Eric Rochester&quot;</span>
+$ <span class="kw">git</span> config --global user.email <span class="st">&quot;erochest@virginia.edu&quot;</span></code></pre>
+</section></section>
 <section><section id="creating-a-project" class="titleslide slide level1"><h1>Creating a Project</h1></section><section id="section-1" class="slide level2">
 <h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">mkdir</span> new-site</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">cd</span> new-site</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> init</code></pre>
 <pre><code>
-$ mkdir new-site
-$ cd new-site
-$ git init
 Initialized empty Git repository in /Users/err8n/tmp/new-site/.git/
 </code></pre>
 <aside class="notes">
@@ -149,10 +181,12 @@ Right now there aren’t any files in here, though. Let’s fix that.
 </aside>
 </section><section id="section-2" class="slide level2">
 <h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">touch</span> index.html</code></pre>
+<p>Edit <code>index.html</code></p>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> status</code></pre>
 <pre><code>
-$ touch index.html
-$ ## edit index.html
-$ git status
 # On branch master
 #
 # Initial commit
@@ -170,9 +204,11 @@ This also gives us a hint of what we can do next.
 </aside>
 </section><section id="section-3" class="slide level2">
 <h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> add index.html</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> status</code></pre>
 <pre><code>
-$ git add index.html
-$ git status
 # On branch master
 #
 # Initial commit
@@ -190,12 +226,16 @@ From the status, we can see that one file—one that git has just learned about�
 </aside>
 </section><section id="section-4" class="slide level2">
 <h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> commit -m <span class="st">&quot;initial import&quot;</span></code></pre>
 <pre><code>
-$ git commit -m &quot;initial import&quot;
 [master (root-commit) 2c49bf0] initial import
  1 file changed, 15 insertions(+)
   create mode 100644 index.html
-$ git status
+</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> status</code></pre>
+<pre><code>
 # On branch master
 nothing to commit, working directory clean
 </code></pre>
@@ -207,8 +247,9 @@ If you don’t specify the commit message on the command line, git will open up 
 </aside>
 </section><section id="section-5" class="slide level2">
 <h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> log</code></pre>
 <pre><code>
-$ git log
 commit 2c49bf0977c74ce232cb52fcb8d129e32ee94f28
 Author: Eric Rochester &lt;erochest@virginia.edu&gt;
 Date:   Thu Nov 7 15:24:46 2013 -0500
@@ -221,11 +262,13 @@ git log is the command we use to look at what’s happened in the repository. Ta
 </section></section>
 <section><section id="changing-a-project" class="titleslide slide level1"><h1>Changing a Project</h1></section><section id="section-6" class="slide level2">
 <h1></h1>
+<p>Edit <code>index.html</code> again.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">touch</span> style.css</code></pre>
+<p>Edit <code>style.css</code></p>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> status</code></pre>
 <pre><code>
-$ # edit index.html again.
-$ touch style.css
-$ # edit style.css
-$ git status
 # On branch master
 # Changes not staged for commit:
 #   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
@@ -246,29 +289,31 @@ style.css is new.
 </aside>
 </section><section id="section-7" class="slide level2">
 <h1></h1>
-<pre><code>
-$ git diff
-diff --git a/index.html b/index.html
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> diff</code></pre>
+<pre class="sourceCode diff"><code class="sourceCode diff">
+<span class="kw">diff --git a/index.html b/index.html</span>
 index 8a5f865..6f7d64e 100644
---- a/index.html
-+++ b/index.html
-@@ -3,6 +3,7 @@
+<span class="dt">--- a/index.html</span>
+<span class="dt">+++ b/index.html</span>
+<span class="dt">@@ -3,6 +3,7 @@</span>
  &lt;head&gt;
      &lt;title&gt;&lt;/title&gt;
      &lt;meta charset=&quot;utf-8&quot; /&gt;
-+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; type=&quot;text/css&quot;&gt;
+<span class="ot">+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; type=&quot;text/css&quot;&gt;</span>
  &lt;/head&gt;
  &lt;body&gt;
-     &lt;header&gt;
-</code></pre>
+     &lt;header&gt;</code></pre>
 <aside class="notes">
 git diff shows us the current set of changes in the working directory for files that are being tracked.
 </aside>
 </section><section id="section-8" class="slide level2">
 <h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> add index.html style.css</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> status</code></pre>
 <pre><code>
-$ git add index.html style.css
-$ git status
  # On branch master
  # Changes to be committed:
  #   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
@@ -282,23 +327,26 @@ Now we’ve put a modified index.html and a new style.css into the staging area.
 </aside>
 </section><section id="section-9" class="slide level2">
 <h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> commit -m <span class="st">&quot;A little bit stylish.&quot;</span></code></pre>
 <pre><code>
-$ git commit -m &quot;A little bit stylish.&quot;
 [master 740343e] A little bit stylish.
  2 files changed, 4 insertions(+)
   create mode 100644 style.css
 </code></pre>
 </section><section id="section-10" class="slide level2">
 <h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> status</code></pre>
 <pre><code>
-$ git status
 # On branch master
 nothing to commit, working directory clean
 </code></pre>
 </section><section id="section-11" class="slide level2">
 <h1></h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> log</code></pre>
 <pre><code>
-$ git log
 commit 740343ec54003a3c70ea2faef961ee22b4c0e2ff
 Author: Eric Rochester &lt;erochest@virginia.edu&gt;
 Date:   Thu Nov 7 16:57:05 2013 -0500
@@ -312,8 +360,8 @@ Date:   Thu Nov 7 15:24:46 2013 -0500
       initial import
 </code></pre>
 </section></section>
-<section><section id="sharing-a-project" class="titleslide slide level1"><h1>Sharing a Project</h1></section><section id="walking-uphill-both-ways" class="slide level2">
-<h1>Walking Uphill Both Ways</h1>
+<section><section id="sharing-a-project" class="titleslide slide level1"><h1>Sharing a Project</h1></section><section id="uphill-both-ways" class="slide level2">
+<h1>Uphill Both Ways</h1>
 <ul>
 <li>Running your own server.</li>
 <li>Emailing diffs.</li>
@@ -333,7 +381,7 @@ Date:   Thu Nov 7 15:24:46 2013 -0500
 </ul>
 </section><section id="remote-repositories" class="slide level2">
 <h1>Remote Repositories</h1>
-<p>Let’s create a new repository on Github.</p>
+<p>Create a new repository on Github.</p>
 <figure>
 <img src="img/new-repo.png" title="New Repository" />
 </figure>
@@ -349,10 +397,9 @@ Date:   Thu Nov 7 15:24:46 2013 -0500
 </figure>
 </section><section id="lets-do-that-then" class="slide level2">
 <h1>Let’s Do That Then!</h1>
-<pre><code>
-$ git remote add origin git@github.com:erochest/new-site.git
-$ git push -u origin master
-</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">
+$ <span class="kw">git</span> remote add origin git@github.com:erochest/new-site.git
+$ <span class="kw">git</span> push -u origin master</code></pre>
 </section><section id="refresh" class="slide level2">
 <h1>Refresh</h1>
 <figure>
