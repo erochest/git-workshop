@@ -1,7 +1,7 @@
 
 from datetime import datetime
 
-from fabric.api import cd, local, task
+from fabric.api import lcd, local, task
 
 
 @task
@@ -24,7 +24,7 @@ def publish(msg=None):
     msg = msg or ('Published on {}.'.format(now.strftime('%c')))
 
     build()
-    with cd('gh-pages'):
+    with lcd('gh-pages'):
         local('git add --all')
         local('git commit -m "{}"'.format(msg))
         local('git push')
