@@ -87,7 +87,7 @@ $ zip -r website website-nov-8-400.doc
 
 ## What's Wrong with this Picture?
 
-> * When did remove that section?
+> * When did I remove that section?
 > * What was I working on Aug 4?
 > * Was that 8:00 AM or PM?
 > * When did I change the stylesheet?
