@@ -59,28 +59,48 @@ You can use this to your advantage, or it can get in your way.
 
 ## File Backup
 
-```
+```bash
 
 $ ls
+
+```
+
+```
+
 Paper.doc
 Paper-aug-30-300.doc
 Paper-aug-4-700.doc
 Paper-aug-4-800.doc
 Paper-jul-31-730.doc
 Paper-sept-1-830.doc
+
+```
+
+```bash
+
 $ cp Paper.doc Paper-nov-8-400.doc
 
 ```
 
 ## Directory Backup
 
-```
+```bash
 
 $ ls
+
+```
+
+```
+
 website/
 website-aug-30-300.zip
 website-aug-4-700.zip
 website-aug-4-800.zip
+
+```
+
+```bash
+
 $ zip -r website website-nov-8-400.doc
 
 ```
@@ -141,15 +161,41 @@ When you're ready to share your project and get other people working on it too.
 We may not get to this today.
 </div>
 
+# Getting Ready
+
+## Who Am I?
+
+```bash
+
+$ git config --global user.name "Eric Rochester"
+$ git config --global user.email "erochest@virginia.edu"
+
+```
+
 # Creating a Project
 
 ## 
 
-```
+```bash
 
 $ mkdir new-site
+
+```
+
+```bash
+
 $ cd new-site
+
+```
+
+```bash
+
 $ git init
+
+```
+
+```
+
 Initialized empty Git repository in /Users/err8n/tmp/new-site/.git/
 
 ```
@@ -168,11 +214,22 @@ Right now there aren't any files in here, though. Let's fix that.
 
 ## 
 
-```
+```bash
 
 $ touch index.html
-$ ## edit index.html
+
+```
+
+Edit `index.html`
+
+```bash
+
 $ git status
+
+```
+
+```
+
 # On branch master
 #
 # Initial commit
@@ -196,10 +253,20 @@ This also gives us a hint of what we can do next.
 
 ## 
 
-```
+```bash
 
 $ git add index.html
+
+```
+
+```bash
+
 $ git status
+
+```
+
+```
+
 # On branch master
 #
 # Initial commit
@@ -226,13 +293,28 @@ about---is ready to be committed. That is, it's in staging.
 
 ##
 
-```
+```bash
 
 $ git commit -m "initial import"
+
+```
+
+```
+
 [master (root-commit) 2c49bf0] initial import
  1 file changed, 15 insertions(+)
   create mode 100644 index.html
+
+```
+
+```bash
+
 $ git status
+
+```
+
+```
+
 # On branch master
 nothing to commit, working directory clean
 
@@ -255,9 +337,14 @@ switch until you can change your default editor (which we won't do now).
 
 ## 
 
-```
+```bash
 
 $ git log
+
+```
+
+```
+
 commit 2c49bf0977c74ce232cb52fcb8d129e32ee94f28
 Author: Eric Rochester <erochest@virginia.edu>
 Date:   Thu Nov 7 15:24:46 2013 -0500
@@ -275,12 +362,24 @@ Take the output apart.
 
 ## 
 
+Edit `index.html` again.
+
+```bash
+
+$ touch style.css
+
 ```
 
-$ # edit index.html again.
-$ touch style.css
-$ # edit style.css
+Edit `style.css`
+
+```bash
+
 $ git status
+
+```
+
+```
+
 # On branch master
 # Changes not staged for commit:
 #   (use "git add <file>..." to update what will be committed)
@@ -306,9 +405,14 @@ style.css is new.
 
 ## 
 
-```
+```bash
 
 $ git diff
+
+```
+
+```diff
+
 diff --git a/index.html b/index.html
 index 8a5f865..6f7d64e 100644
 --- a/index.html
@@ -331,10 +435,20 @@ that are being tracked.
 
 ## 
 
-```
+```bash
 
 $ git add index.html style.css
+
+```
+
+```bash
+
 $ git status
+
+```
+
+```
+
  # On branch master
  # Changes to be committed:
  #   (use "git reset HEAD <file>..." to unstage)
@@ -351,9 +465,14 @@ Now we've put a modified index.html and a new style.css into the staging area.
 
 ##
 
-```
+```bash
 
 $ git commit -m "A little bit stylish."
+
+```
+
+```
+
 [master 740343e] A little bit stylish.
  2 files changed, 4 insertions(+)
   create mode 100644 style.css
@@ -362,9 +481,14 @@ $ git commit -m "A little bit stylish."
 
 ##
 
-```
+```bash
 
 $ git status
+
+```
+
+```
+
 # On branch master
 nothing to commit, working directory clean
 
@@ -372,9 +496,14 @@ nothing to commit, working directory clean
 
 ##
 
-```
+```bash
 
 $ git log
+
+```
+
+```
+
 commit 740343ec54003a3c70ea2faef961ee22b4c0e2ff
 Author: Eric Rochester <erochest@virginia.edu>
 Date:   Thu Nov 7 16:57:05 2013 -0500
@@ -391,7 +520,7 @@ Date:   Thu Nov 7 15:24:46 2013 -0500
 
 # Sharing a Project
 
-## Walking Uphill Both Ways
+## Uphill Both Ways
 
 * Running your own server.
 * Emailing diffs.
@@ -413,7 +542,7 @@ https://github.com
 
 ## Remote Repositories
 
-Let's create a new repository on Github.
+Create a new repository on Github.
 
 ![](img/new-repo.png "New Repository")
 
@@ -427,7 +556,7 @@ Let's create a new repository on Github.
 
 ## Let's Do That Then!
 
-```
+```bash
 
 $ git remote add origin git@github.com:erochest/new-site.git
 $ git push -u origin master
