@@ -7,8 +7,14 @@ from fabric.api import cd, local, task
 @task
 def build():
     local(
-        'pandoc --smart --to=revealjs --output=gh-pages/index.html '
-        '--standalone git-workshop.md'
+        'pandoc '
+        '--smart '
+        '--to=revealjs '
+        '--output=gh-pages/index.html '
+        '--standalone '
+        '--slide-level=2 '
+        '-V theme=moon '
+        'git-workshop.md'
         )
 
 
