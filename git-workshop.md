@@ -59,7 +59,8 @@ You can use this to your advantage, or it can get in your way.
 
 ## File Backup
 
-```bash
+```
+
 $ ls
 Paper.doc
 Paper-aug-30-300.doc
@@ -68,17 +69,20 @@ Paper-aug-4-800.doc
 Paper-jul-31-730.doc
 Paper-sept-1-830.doc
 $ cp Paper.doc Paper-nov-8-400.doc
+
 ```
 
 ## Directory Backup
 
-```bash
+```
+
 $ ls
 website/
 website-aug-30-300.zip
 website-aug-4-700.zip
 website-aug-4-800.zip
 $ zip -r website website-nov-8-400.doc
+
 ```
 
 ## What's Wrong with this Picture?
@@ -141,11 +145,13 @@ We may not get to this today.
 
 ## 
 
-```bash
+```
+
 $ mkdir new-site
 $ cd new-site
 $ git init
 Initialized empty Git repository in /Users/err8n/tmp/new-site/.git/
+
 ```
 
 <div class="notes">
@@ -162,7 +168,8 @@ Right now there aren't any files in here, though. Let's fix that.
 
 ## 
 
-```bash
+```
+
 $ touch index.html
 $ ## edit index.html
 $ git status
@@ -175,6 +182,7 @@ $ git status
 #
 #       index.html
 nothing added to commit but untracked files present (use "git add" to track)
+
 ```
 
 <div class="notes">
@@ -188,7 +196,8 @@ This also gives us a hint of what we can do next.
 
 ## 
 
-```bash
+```
+
 $ git add index.html
 $ git status
 # On branch master
@@ -200,6 +209,7 @@ $ git status
 #
 #       new file:   index.html
 #
+
 ```
 
 <div class="notes">
@@ -216,7 +226,8 @@ about---is ready to be committed. That is, it's in staging.
 
 ##
 
-```bash
+```
+
 $ git commit -m "initial import"
 [master (root-commit) 2c49bf0] initial import
  1 file changed, 15 insertions(+)
@@ -224,6 +235,7 @@ $ git commit -m "initial import"
 $ git status
 # On branch master
 nothing to commit, working directory clean
+
 ```
 
 <div class="notes">
@@ -243,13 +255,15 @@ switch until you can change your default editor (which we won't do now).
 
 ## 
 
-```bash
+```
+
 $ git log
 commit 2c49bf0977c74ce232cb52fcb8d129e32ee94f28
 Author: Eric Rochester <erochest@virginia.edu>
 Date:   Thu Nov 7 15:24:46 2013 -0500
 
     initial import
+
 ```
 
 <div class="notes">
@@ -261,7 +275,8 @@ Take the output apart.
 
 ## 
 
-```bash
+```
+
 $ # edit index.html again.
 $ touch style.css
 $ # edit style.css
@@ -278,6 +293,7 @@ $ git status
 #
 #       style.css
 no changes added to commit (use "git add" and/or "git commit -a")
+
 ```
 
 <div class="notes">
@@ -290,7 +306,8 @@ style.css is new.
 
 ## 
 
-```bash
+```
+
 $ git diff
 diff --git a/index.html b/index.html
 index 8a5f865..6f7d64e 100644
@@ -304,6 +321,7 @@ index 8a5f865..6f7d64e 100644
  </head>
  <body>
      <header>
+
 ```
 
 <div class="notes">
@@ -313,7 +331,8 @@ that are being tracked.
 
 ## 
 
-```bash
+```
+
 $ git add index.html style.css
 $ git status
  # On branch master
@@ -323,6 +342,7 @@ $ git status
  #       modified:   index.html
  #       new file:   style.css
  #
+
 ```
 
 <div class="notes">
@@ -331,16 +351,127 @@ Now we've put a modified index.html and a new style.css into the staging area.
 
 ##
 
-```bash
+```
+
 $ git commit -m "A little bit stylish."
 [master 740343e] A little bit stylish.
  2 files changed, 4 insertions(+)
   create mode 100644 style.css
+
 ```
 
-<!-- TODO: git status and git log -->
+##
+
+```
+
+$ git status
+# On branch master
+nothing to commit, working directory clean
+
+```
+
+##
+
+```
+
+$ git log
+commit 740343ec54003a3c70ea2faef961ee22b4c0e2ff
+Author: Eric Rochester <erochest@virginia.edu>
+Date:   Thu Nov 7 16:57:05 2013 -0500
+
+     A little bit stylish.
+
+commit 2c49bf0977c74ce232cb52fcb8d129e32ee94f28
+Author: Eric Rochester <erochest@virginia.edu>
+Date:   Thu Nov 7 15:24:46 2013 -0500
+
+      initial import
+
+```
 
 # Sharing a Project
 
+## Walking Uphill Both Ways
+
+* Running your own server.
+* Emailing diffs.
+
+## Github
+
+The unholy spawn of Facebook and git.
+
+Let's get an account!
+
+https://github.com
+
+## Plays Well With Others
+
+> * Organizations
+> * Collaborators
+> * Forking
+> * Pull Requests
+
+## Remote Repositories
+
+Let's create a new repository on Github.
+
+![](img/new-repo.png "New Repository")
+
+##
+
+![](img/new-repo-form.png "New Repository")
+
+##
+
+![](img/push.png "Push and existing repository")
+
+## Let's Do That Then!
+
+```
+
+$ git remote add origin git@github.com:erochest/new-site.git
+$ git push -u origin master
+
+```
+
+## Refresh
+
+![](img/files.png "ERMAHGERD! FILES!")
+
+##
+
+![](img/commits.png "ERMAHGERD! COMMITS!")
+
+## Github
+
+### The Clone Wars
+
+![](img/clone.png "Clone")
+
+# MOAR!
+
+## Branches
+
+## Workflows
+
+## Forking
+
 # More Resources
+
+## Git
+
+[http://git-scm.com/](http://git-scm.com/)
+
+## Github
+
+[https://github.com/](https://github.com/)
+
+## A Great Cheatsheet
+
+[http://rogerdudler.github.io/git-guide/files/git_cheat_sheet.pdf](http://rogerdudler.github.io/git-guide/files/git_cheat_sheet.pdf)
+
+## Scholars' Lab Resources
+
+* [http://praxis.scholarslab.org/tutorials/git/](http://praxis.scholarslab.org/tutorials/git/)
+* [http://praxis.scholarslab.org/topics/intro-to-git/](http://praxis.scholarslab.org/topics/intro-to-git/)
 
