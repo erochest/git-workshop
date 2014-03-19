@@ -1,7 +1,7 @@
 % Git Workshop
 % Eric Rochester
   Scholars' Lab
-% November 8, 2013
+% March 19, 2014
 
 ## 
 
