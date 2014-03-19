@@ -1,5 +1,21 @@
 
-.larger {
-    font-size: larger;
+@import '../reveal.js/css/theme/simple.css';
+@import '../reveal.js/css/theme/solarized.css';
+
+.base00 {
+    color  : #657b83;
+    stroke : #657b83;
+    fill   : #657b83;
 }
 
+.base01 {
+    color  : #586e75;
+    stroke : #586e75;
+    fill   : #586e75;
+}
+
+.base02 {
+    color  : #073642;
+    stroke : #073642;
+    fill   : #073642;
+}
