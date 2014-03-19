@@ -29,6 +29,7 @@ def publish(msg=None):
 
     build()
     with lcd('gh-pages'):
+        local('git checkout gh-pages')
         local('git add --all')
         local('git commit -m "{}"'.format(msg))
         local('git push')
