@@ -4,17 +4,21 @@ from datetime import datetime
 from fabric.api import lcd, local, task
 
 
+THEME = 'solarized'
+
+
 @task
 def build():
     local(
         'pandoc '
         '--smart '
         '--to=revealjs '
+        '--css=css/style.css '
         '--output=gh-pages/index.html '
         '--standalone '
         '--slide-level=2 '
-        '-V theme=moon '
-        'git-workshop.md'
+        '-V theme={} '
+        'git-workshop.md'.format(THEME)
         )
 
 
